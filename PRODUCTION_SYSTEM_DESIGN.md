@@ -3,11 +3,21 @@
 ## Executive Summary
 
 This document provides a **production-ready** system design for a visual workflow platform combining:
-- **Visual Blocks & Triggers** (from Sim, Flowise, Flojoy)
+- **Visual Blocks & Triggers** (from [`repos/sim`](https://github.com/simstudioai/sim), [`repos/Flowise`](https://github.com/FlowiseAI/Flowise), [`repos/flojoy`](https://github.com/flojoy-ai/studio))
 - **Semantic Routing & Intelligent Tool Selection** (from umbrella_corp)
 - **Connector Management UI** (from [OpenMetadata](https://open-metadata.org/) - 100+ connectors)
 - **Visual Composition Patterns** (from [ShaderFrog](https://shaderfrog.com/2/) - node-based editor)
 - **Production-Grade Infrastructure** (scalability, reliability, monitoring)
+
+## Source Repositories
+
+This design incorporates best practices from the following cloned repositories:
+
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Trigger system, webhook handling, OAuth integration
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - HTTP request tools, OAuth2 credentials
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Manifest-based blocks
+- **Flojoy Studiolab**: [`repos/flojoy-studiolab`](https://github.com/flojoy-ai/studiolab) - Alternative implementation
+- **FedRAMP Automation**: [`repos/fedramp-automation`](https://github.com/GSA/fedramp-automation) - Validation patterns
 
 ---
 

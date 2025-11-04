@@ -5,7 +5,10 @@
 This document provides a comprehensive list of third-party APIs that should be included in the production system, organized by priority, category, and use case. The recommendations are based on:
 
 1. **Industry Standards**: Most commonly used APIs in workflow automation
-2. **Repository Analysis**: APIs found in Sim, Flowise, and Flojoy
+2. **Repository Analysis**: APIs found in cloned repositories:
+   - **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Trigger integrations (Slack, Gmail, GitHub, etc.)
+   - **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Tool integrations (Google Calendar, Gmail, Slack, etc.)
+   - **OpenMetadata**: Connector patterns for 100+ APIs
 3. **User Demand**: High-request integrations from similar platforms
 4. **Production Readiness**: APIs with stable, well-documented endpoints
 
@@ -876,9 +879,12 @@ This provides broad coverage across major use cases while keeping implementation
 
 ## Related Documentation
 
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for integration architecture
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure
 - **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for flow explanation
-- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for patterns
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
 - **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
+- **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for API endpoint specifications
+- **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
 

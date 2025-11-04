@@ -1,7 +1,12 @@
 # Unified API Design Proposal for CrewAI-like Block/Trigger System
 
 ## Overview
-This document proposes a user-friendly and effective API structure for a block-based workflow system similar to CrewAI, inspired by the best practices from Sim, Flowise, and Flojoy.
+This document proposes a user-friendly and effective API structure for a block-based workflow system similar to CrewAI, inspired by the best practices from cloned repositories:
+
+**Source Repositories:**
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - API routes structure, webhook endpoints
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Node/credential API patterns
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Block API patterns
 
 ---
 
@@ -1177,9 +1182,13 @@ The structure is inspired by all three platforms while improving upon their limi
 
 ## Related Documentation
 
-- **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for production-ready architecture
-- **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for detailed connector patterns
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
+- **Comprehensive System Design**: See `COMPREHENSIVE_SYSTEM_DESIGN.md` for complete system overview
+- **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for production-ready architecture with semantic routing and tool wrapping
+- **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for detailed connector patterns and structure
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration approaches
+- **Integration Flow Explained**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for detailed flow explanation
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
-- **Semantic Routing**: See `PRODUCTION_SYSTEM_DESIGN.md` for semantic routing implementation
 - **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI patterns from OpenMetadata and ShaderFrog
+- **API Implementation Examples**: See `API_IMPLEMENTATION_EXAMPLE.md` for TypeScript implementation examples
 

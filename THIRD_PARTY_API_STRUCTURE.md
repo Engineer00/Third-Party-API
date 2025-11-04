@@ -2,7 +2,16 @@
 
 ## Overview
 
-This document defines the complete structure for integrating third-party APIs into the production system, combining visual blocks, semantic routing, and intelligent tool selection. UI patterns are inspired by [OpenMetadata](https://open-metadata.org/)'s connector management and [ShaderFrog](https://shaderfrog.com/2/)'s visual composition approach.
+This document defines the complete structure for integrating third-party APIs into the production system, combining visual blocks, semantic routing, and intelligent tool selection. Patterns are derived from:
+
+**Cloned Repositories:**
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Trigger registry, webhook handling, OAuth patterns
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - HTTP request tools, OAuth2 credentials
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Manifest-based block definitions
+
+**External References:**
+- **OpenMetadata**: [https://open-metadata.org/](https://open-metadata.org/) - Connector management patterns
+- **ShaderFrog**: [https://shaderfrog.com/2/](https://shaderfrog.com/2/) - Visual composition approach
 
 ---
 
@@ -1072,10 +1081,13 @@ export interface ConnectorSetupWizard {
 
 ## Related Documentation
 
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
 - **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete architecture
 - **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for flow explanation
 - **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
+- **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for API endpoint specifications
+- **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
 
 ---
 

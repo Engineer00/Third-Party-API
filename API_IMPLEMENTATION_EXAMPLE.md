@@ -2,6 +2,10 @@
 
 This document provides practical TypeScript examples for implementing the proposed API structure.
 
+**Implementation patterns are based on:**
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Next.js API routes, TypeScript + Zod validation
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Express.js patterns, credential handling
+
 ---
 
 ## 1. Type Definitions
@@ -873,8 +877,11 @@ export class ProductionSemanticRouter {
 
 ## Related Documentation
 
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
+- **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for complete API endpoint specifications
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete semantic routing and tool wrapper implementation
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure and route map format
-- **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for complete API endpoint specifications
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration approaches
 - **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI implementation patterns from OpenMetadata and ShaderFrog
+- **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
 

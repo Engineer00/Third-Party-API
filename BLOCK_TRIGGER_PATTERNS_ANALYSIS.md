@@ -1,7 +1,13 @@
 # Block/Trigger UI Patterns Analysis
 
 ## Overview
-This document summarizes the block-based UI and trigger patterns found in three AI workflow platforms (sim, Flowise, flojoy) and insights from visual programming interfaces (ShaderFrog, OpenMetadata).
+This document summarizes the block-based UI and trigger patterns found in three AI workflow platforms and insights from visual programming interfaces. Analysis is based on cloned repositories:
+
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Next.js workflow platform
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - LangChain UI
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Visual block-based test sequencer
+- **Flojoy Studiolab**: [`repos/flojoy-studiolab`](https://github.com/flojoy-ai/studiolab) - Lab version
+- **External References**: ShaderFrog, OpenMetadata
 
 ---
 
@@ -496,7 +502,11 @@ class GoogleSuiteFlow(Flow):
 
 ## Related Documentation
 
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
+- **Comprehensive System Design**: See `COMPREHENSIVE_SYSTEM_DESIGN.md` for complete system overview
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for production-ready semantic routing implementation
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for route map structure and tool wrapper patterns
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration approaches
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI patterns from OpenMetadata and ShaderFrog
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for semantic routing flow diagrams
 

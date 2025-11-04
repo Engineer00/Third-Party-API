@@ -1,7 +1,13 @@
 # Third-Party API Integration Patterns
 
 ## Overview
-This document analyzes how block-based workflow systems (Sim, Flowise, Flojoy) integrate with third-party APIs like Google, Slack, webhooks, and HTTP requests. These patterns are essential for building a comprehensive CrewAI-like system. It also incorporates UI flow patterns from [OpenMetadata](https://open-metadata.org/) (connector discovery and management) and [ShaderFrog](https://shaderfrog.com/2/) (visual composition).
+This document analyzes how block-based workflow systems integrate with third-party APIs like Google, Slack, webhooks, and HTTP requests. These patterns are essential for building a comprehensive CrewAI-like system. Analysis is based on cloned repositories:
+
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Trigger-based integration patterns
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Tool-based integration patterns
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Block-based integration patterns
+- **Flojoy Studiolab**: [`repos/flojoy-studiolab`](https://github.com/flojoy-ai/studiolab) - Alternative implementation
+- **External References**: [OpenMetadata](https://open-metadata.org/) (connector discovery and management) and [ShaderFrog](https://shaderfrog.com/2/) (visual composition)
 
 ---
 
@@ -1016,8 +1022,12 @@ Connect Nodes → Real-time Preview → Execute
 
 ## Related Documentation
 
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for production-ready implementation
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for complete connector structure
+- **Integration Flow Explained**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for detailed flow explanation
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual flow diagrams
 - **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
+- **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for API endpoint specifications
+- **Block/Trigger Patterns**: See `BLOCK_TRIGGER_PATTERNS_ANALYSIS.md` for UI patterns from Sim, Flowise, and Flojoy
 

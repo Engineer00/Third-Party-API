@@ -4,6 +4,11 @@
 
 This document details the UI flow patterns from [OpenMetadata](https://open-metadata.org/) and [ShaderFrog](https://shaderfrog.com/2/) that are specifically relevant to API integration workflows. These patterns enhance the user experience for connecting, configuring, and managing third-party API integrations.
 
+**Additional UI patterns are derived from:**
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Trigger configuration UI, workflow editor
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Node configuration, credential management UI
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Block palette, visual editor
+
 ---
 
 ## Table of Contents
@@ -901,6 +906,18 @@ export interface ConnectorConfig {
 - **ShaderFrog**: https://shaderfrog.com/2/ - Visual shader editor with node-based composition
 - **OpenMetadata Connectors**: https://open-metadata.org/docs/connectors - Connector documentation
 - **OpenMetadata Architecture**: https://open-metadata.org/docs/architecture - System architecture
+
+---
+
+## Related Documentation
+
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach incorporating these UI patterns
+- **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for UI flows implementation with code examples
+- **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for UI integration patterns in connector structure
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for UI flow patterns section
+- **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for UI flow patterns explanation
+- **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for UI flow components in architecture
+- **Comprehensive System Design**: See `COMPREHENSIVE_SYSTEM_DESIGN.md` for visual patterns overview
 
 ---
 

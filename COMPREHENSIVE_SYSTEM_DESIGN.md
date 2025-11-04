@@ -1319,7 +1319,7 @@ export async function queueWorkflowExecution(
 
 ## Repository Summaries
 
-### Sim (`simstudioai/sim`)
+### Sim (`repos/sim` - https://github.com/simstudioai/sim)
 
 **Purpose**: Build and deploy AI agent workflows visually
 
@@ -1341,19 +1341,26 @@ export async function queueWorkflowExecution(
 
 **Architecture Highlights**:
 - Monorepo structure
-- Block registry system
-- Trigger registry system
+- Block registry system (`apps/sim/blocks/`)
+- Trigger registry system (`apps/sim/triggers/`)
 - Comprehensive API structure
-- Webhook handling
+- Webhook handling (`app/api/webhooks/trigger/[path]/route.ts`)
 
-**Best Practices**:
-- Type-safe with TypeScript + Zod
-- Encrypted credential storage
-- Webhook signature verification
-- Rate limiting
-- Comprehensive error handling
+**Best Practices for Our Use Case**:
+- ✅ **Trigger Registry Pattern**: Centralized trigger definitions (`triggers/index.ts`)
+- ✅ **OAuth Integration**: Provider-specific credential management
+- ✅ **Webhook Handler**: Production-ready with signature verification
+- ✅ **Type Safety**: TypeScript + Zod validation
+- ✅ **Rate Limiting**: Built-in rate and usage limits
+- ✅ **Error Handling**: Comprehensive error handling
 
-### Flowise (`FlowiseAI/Flowise`)
+**Key Files to Reference**:
+- `apps/sim/triggers/index.ts` - Trigger registry
+- `apps/sim/triggers/types.ts` - Trigger type definitions
+- `app/api/webhooks/trigger/[path]/route.ts` - Webhook handler
+- `components/trigger-config/trigger-config.tsx` - Trigger configuration UI
+
+### Flowise (`repos/Flowise` - https://github.com/FlowiseAI/Flowise)
 
 **Purpose**: Build AI agents visually with LangChain
 
@@ -1375,16 +1382,23 @@ export async function queueWorkflowExecution(
 - Monorepo (server, ui, components)
 - Node registry system
 - Tool-based API integration
-- Generic HTTP request tools
+- Generic HTTP request tools (`packages/components/nodes/tools/RequestsGet/`)
 - Service-specific nodes
 
-**Best Practices**:
-- Modular node architecture
-- Extensible tool system
-- OAuth2 credential handling
-- Async node loading
+**Best Practices for Our Use Case**:
+- ✅ **Generic HTTP Tools**: RequestsGet, RequestsPost for flexible API integration
+- ✅ **OAuth2 Credentials**: Centralized credential management
+- ✅ **Schema-Based Config**: JSON schema for request/response validation
+- ✅ **Service-Specific Nodes**: Google Calendar, Gmail, Slack integrations
+- ✅ **Async Options**: Dynamic dropdown loading
 
-### Flojoy (`flojoy-ai/studio`)
+**Key Files to Reference**:
+- `packages/components/nodes/tools/RequestsGet/RequestsGet.ts` - Generic HTTP GET tool
+- `packages/components/nodes/tools/RequestsPost/RequestsPost.ts` - Generic HTTP POST tool
+- `packages/components/nodes/tools/GoogleCalendar/GoogleCalendar.ts` - Service-specific integration
+- `packages/components/src/Interface.ts` - Node and credential interfaces
+
+### Flojoy (`repos/flojoy` - https://github.com/flojoy-ai/studio)
 
 **Purpose**: Test sequencer for hardware validation
 
@@ -1404,23 +1418,33 @@ export async function queueWorkflowExecution(
 
 **Architecture Highlights**:
 - Electron architecture
-- Block manifest system
+- Block manifest system (`blocks/*/app.json`)
 - Python execution engine
 - Hardware abstraction
 
-**Best Practices**:
-- Manifest-driven blocks
-- Type-safe block definitions
-- Clean separation of concerns
+**Best Practices for Our Use Case**:
+- ✅ **Manifest-Based Blocks**: JSON-based block definitions
+- ✅ **Type Safety**: TypeScript frontend, Python backend
+- ✅ **Category Organization**: Blocks organized by function
+- ✅ **Block Registry**: Dynamic block loading
 
-### FedRAMP Automation (`GSA/fedramp-automation`)
+**Key Files to Reference**:
+- `blocks/*/app.json` - Block manifest examples
+- `src/renderer/` - Frontend block registry
+
+### FedRAMP Automation (`repos/fedramp-automation` - https://github.com/GSA/fedramp-automation)
 
 **Purpose**: OSCAL validation and templates for FedRAMP compliance
 
-**Not directly relevant** to blocks/triggers research, but provides:
-- Validation framework patterns
-- Schema validation
-- Documentation generation
+**Relevance for Our Use Case**:
+- ✅ **Schema Validation Patterns**: Structured validation framework (`src/validations/`)
+- ✅ **Error Reporting**: Comprehensive error handling
+- ✅ **Documentation Generation**: Automated documentation patterns
+
+**Best Practices for Our Use Case**:
+- Schema validation for API request/response
+- Error reporting patterns
+- Compliance checking (useful for enterprise APIs)
 
 ---
 
@@ -1568,8 +1592,8 @@ This comprehensive design is complemented by additional detailed documentation:
 - **API Design Proposal** (`API_DESIGN_PROPOSAL.md`): RESTful API endpoints and specifications
 - **API Implementation Examples** (`API_IMPLEMENTATION_EXAMPLE.md`): TypeScript implementation examples with Zod validation
 - **Block/Trigger Patterns** (`BLOCK_TRIGGER_PATTERNS_ANALYSIS.md`): Detailed analysis of UI patterns from Sim, Flowise, and Flojoy
-- **UI Flow Patterns** (`OPENMETADATA_SHADERFROG_UI_PATTERNS.md`): Detailed UI patterns from OpenMetadata (connector management) and ShaderFrog (visual composition)
 - **Best Integration Approach** (`BEST_API_INTEGRATION_APPROACH.md`): Analysis and recommendation for the most effective API integration approach
+- **UI Flow Patterns** (`OPENMETADATA_SHADERFROG_UI_PATTERNS.md`): Detailed UI patterns from OpenMetadata (connector management) and ShaderFrog (visual composition)
 - **Integration Flow Explained** (`THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md`): Detailed explanation of the third-party API integration flow
 - **Integration Patterns** (`THIRD_PARTY_API_INTEGRATION_PATTERNS.md`): Comprehensive integration patterns from Sim, Flowise, Flojoy, OpenMetadata, and ShaderFrog
 - **Recommended APIs** (`THIRD_PARTY_APIS_RECOMMENDED.md`): List of recommended third-party APIs for integration

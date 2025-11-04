@@ -2,7 +2,16 @@
 
 ## Overview
 
-This document contains Mermaid-format diagrams for the complete system architecture, including third-party API integration flows. The architecture incorporates patterns from [OpenMetadata](https://open-metadata.org/) (connector management) and [ShaderFrog](https://shaderfrog.com/2/) (visual composition).
+This document contains Mermaid-format diagrams for the complete system architecture, including third-party API integration flows. The architecture incorporates patterns from:
+
+**Cloned Repositories:**
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Trigger system, webhook handling
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Tool execution, API integration
+- **Flojoy**: [`repos/flojoy`](https://github.com/flojoy-ai/studio) - Block-based architecture
+
+**External References:**
+- **OpenMetadata**: [https://open-metadata.org/](https://open-metadata.org/) - Connector management
+- **ShaderFrog**: [https://shaderfrog.com/2/](https://shaderfrog.com/2/) - Visual composition
 
 ---
 

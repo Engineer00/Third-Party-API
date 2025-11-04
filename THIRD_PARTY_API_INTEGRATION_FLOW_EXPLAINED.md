@@ -4,6 +4,11 @@
 
 This document provides a comprehensive explanation of the **Third-Party API Integration Flow** sequence diagram. This flow illustrates how user queries are intelligently routed to appropriate third-party APIs, executed with production-ready features, and results are returned to the user.
 
+**Flow patterns are derived from:**
+- **Sim**: [`repos/sim`](https://github.com/simstudioai/sim) - Webhook handling, trigger execution
+- **Flowise**: [`repos/Flowise`](https://github.com/FlowiseAI/Flowise) - Tool execution, credential handling
+- **umbrella_corp**: Semantic routing patterns
+
 ---
 
 ## Table of Contents
@@ -855,9 +860,11 @@ This flow ensures reliable, secure, and efficient integration with third-party A
 
 ## Related Documentation
 
+- **Best Integration Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended approach and analysis
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete architecture
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
-- **API Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
 - **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
+- **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for API endpoint specifications
 
