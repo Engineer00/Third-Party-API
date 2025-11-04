@@ -225,26 +225,58 @@ All three platforms use **ReactFlow** as the core flow editor:
 ## 5. Insights from External Platforms
 
 ### ShaderFrog (shaderfrog.com/2/)
-- **Node-based Composition**: Visual shader composition
-- **Parameter Tweaking**: Real-time parameter adjustment
-- **Visual Preview**: Live preview of shader output
-- **Export**: Export to Three.js/Babylon.js
+
+**Visual Node Composition**:
+- Node-based visual programming interface
+- Drag-and-drop node placement
+- Real-time parameter adjustment with inline controls
+- Visual preview of shader output
+- Export to Three.js/Babylon.js
+
+**UI Flow Patterns for API Integration**:
+- **Inline Parameter Controls**: Parameters visible directly on nodes (select dropdowns, input fields, sliders)
+- **Real-time Updates**: Changes reflect immediately in preview
+- **Visual Feedback**: Status indicators, connection highlights, error states
+- **Node Categories**: Organized palette (Inputs, Math, Effects, Outputs)
+- **Visual Composition**: Compose complex workflows from simple building blocks
 
 **Relevant Patterns**:
 - Node-based visual programming
-- Parameter adjustment interface
-- Real-time preview
+- Parameter adjustment interface with inline controls
+- Real-time preview of API requests/responses
+- Visual feedback during configuration
+- Categorized node organization
 
 ### OpenMetadata (open-metadata.org/)
-- **Unified Metadata Graph**: Centralized metadata
-- **Lineage Visualization**: Data flow visualization
-- **Relationship Mapping**: Entity relationships
-- **Collaboration**: Team collaboration features
+
+**Connector Architecture**:
+- 100+ data connectors with standardized pattern
+- Unified metadata graph for relationship visualization
+- Connector browser UI with search and filtering
+- Status dashboard with health indicators
+- Lineage visualization for data flow tracking
+
+**UI Flow Patterns for API Integration**:
+- **Connector Discovery**: Categorized browser (API, Database, Messaging, Dashboard, Pipeline, ML Model, Metadata, Search, Storage)
+- **Visual Connector Cards**: Icons, descriptions, status badges, popularity metrics
+- **Setup Wizard**: Multi-step guided configuration with validation
+- **Status Dashboard**: Real-time health indicators (🟢🟡🔴), last sync, API metrics
+- **Metadata Graph**: Interactive visualization of connector relationships and data flow
+- **Quick Actions**: Test connection, re-authenticate, view logs from dashboard
 
 **Relevant Patterns**:
+- Connector browser UI for discovery and selection
+- Multi-step setup wizard for configuration
+- Status dashboard for monitoring and management
 - Metadata relationship visualization
-- Lineage tracking
-- Unified graph structure
+- Lineage tracking for data flow
+- Unified graph structure for all integrations
+
+**Key Insights for API Integration**:
+- OpenMetadata's connector browser provides excellent UX for discovering and connecting APIs
+- The setup wizard pattern ensures proper configuration before deployment
+- Status dashboard enables proactive monitoring of API integrations
+- Metadata graph visualization helps understand integration relationships
 
 ---
 

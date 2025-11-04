@@ -1433,32 +1433,97 @@ export async function queueWorkflowExecution(
 - Drag-and-drop interface
 - Real-time preview
 - Node categories and organization
+- Inline parameter controls
+- Visual parameter tweaking
+
+**UI Flow Patterns for API Integration**:
+1. **Visual Editor**:
+   - Drag connectors from palette to canvas
+   - Connect nodes with visual edges
+   - Real-time parameter adjustment
+   - Visual preview of API requests/responses
+
+2. **Inline Parameter Controls**:
+   - Parameters visible directly on nodes
+   - Type-appropriate controls (select, input, slider, toggle)
+   - Real-time updates as you adjust
+   - Visual feedback on changes
+
+3. **Real-time Preview**:
+   - Live preview of API request structure
+   - Response preview after test
+   - Visual status indicators
+   - Error highlighting
+
+4. **Node Organization**:
+   - Categorized node palette (Inputs, Processing, Outputs)
+   - Visual grouping by function
+   - Search within palette
+   - Favorites/pinned nodes
 
 **Applicable Patterns**:
 1. **Node Categories**: Organize blocks by function (similar to ShaderFrog's shader types)
 2. **Visual Composition**: Compose complex workflows from simple blocks
-3. **Preview System**: Show workflow structure visually
-4. **Community Marketplace**: Share and discover workflows/blocks
+3. **Preview System**: Show workflow structure visually with real-time updates
+4. **Inline Controls**: Parameters directly on nodes for immediate feedback
+5. **Real-time Feedback**: Visual updates as you configure (ShaderFrog-style)
+6. **Parameter Tweaking**: Adjust parameters and see immediate effects
+
+**Key Insights**:
+- ShaderFrog's inline parameter controls provide excellent UX for configuration
+- Real-time preview enables immediate feedback during setup
+- Visual composition makes complex workflows intuitive
+- Node-based organization improves discoverability
 
 ### OpenMetadata Patterns
 
 **Connector Architecture**:
-- 100+ data connectors
+- 100+ data connectors organized by category
 - Standardized connector pattern
-- Metadata graph
+- Metadata graph visualization
 - Unified API
+- Connector browser UI with search and filtering
+
+**UI Flow Patterns for API Integration**:
+1. **Connector Discovery**:
+   - Categorized browser (API, Database, Messaging, Dashboard, Pipeline, ML Model, Metadata, Search, Storage)
+   - Visual connector cards with icons, status, and metrics
+   - Search and filter capabilities
+   - Quick connect functionality
+
+2. **Setup Wizard**:
+   - Multi-step guided configuration
+   - Step-by-step validation
+   - Test connection before deployment
+   - Review and confirm before activation
+
+3. **Status Dashboard**:
+   - Real-time health indicators (🟢 Connected, 🟡 Warning, 🔴 Error)
+   - Last sync information
+   - API usage metrics (calls, errors, rate limits)
+   - Quick action buttons (test, re-authenticate, view logs)
+
+4. **Metadata Graph Visualization**:
+   - Interactive node-based view
+   - Relationship lines showing data flow
+   - Lineage tracking visualization
+   - Filter by connector type, status, or data flow path
 
 **Applicable Patterns**:
-1. **Connector Registry**: Centralized connector definitions
-2. **Standardized Integration**: Consistent connector interface
-3. **Metadata Management**: Track integration metadata
-4. **API-First Design**: Extensible architecture
+1. **Connector Registry**: Centralized connector definitions with UI metadata
+2. **Standardized Integration**: Consistent connector interface across all APIs
+3. **Metadata Management**: Track integration metadata and relationships
+4. **API-First Design**: Extensible architecture for adding new connectors
+5. **Visual Discovery**: User-friendly connector browser for easy discovery
+6. **Health Monitoring**: Real-time status indicators and metrics dashboard
 
 **Key Insights**:
 - OpenMetadata's connector pattern is excellent for third-party API integration
 - Standardized connector interface makes adding new integrations easy
 - Metadata graph helps track relationships between integrations
 - API-first design enables extensibility
+- **Connector browser UI** provides excellent UX for discovering and connecting APIs
+- **Status dashboard** enables proactive monitoring and management
 
 ---
 
@@ -1503,6 +1568,11 @@ This comprehensive design is complemented by additional detailed documentation:
 - **API Design Proposal** (`API_DESIGN_PROPOSAL.md`): RESTful API endpoints and specifications
 - **API Implementation Examples** (`API_IMPLEMENTATION_EXAMPLE.md`): TypeScript implementation examples with Zod validation
 - **Block/Trigger Patterns** (`BLOCK_TRIGGER_PATTERNS_ANALYSIS.md`): Detailed analysis of UI patterns from Sim, Flowise, and Flojoy
+- **UI Flow Patterns** (`OPENMETADATA_SHADERFROG_UI_PATTERNS.md`): Detailed UI patterns from OpenMetadata (connector management) and ShaderFrog (visual composition)
+- **Best Integration Approach** (`BEST_API_INTEGRATION_APPROACH.md`): Analysis and recommendation for the most effective API integration approach
+- **Integration Flow Explained** (`THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md`): Detailed explanation of the third-party API integration flow
+- **Integration Patterns** (`THIRD_PARTY_API_INTEGRATION_PATTERNS.md`): Comprehensive integration patterns from Sim, Flowise, Flojoy, OpenMetadata, and ShaderFrog
+- **Recommended APIs** (`THIRD_PARTY_APIS_RECOMMENDED.md`): List of recommended third-party APIs for integration
 
 ---
 

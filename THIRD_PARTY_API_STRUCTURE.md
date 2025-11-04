@@ -2,7 +2,7 @@
 
 ## Overview
 
-This document defines the complete structure for integrating third-party APIs into the production system, combining visual blocks, semantic routing, and intelligent tool selection.
+This document defines the complete structure for integrating third-party APIs into the production system, combining visual blocks, semantic routing, and intelligent tool selection. UI patterns are inspired by [OpenMetadata](https://open-metadata.org/)'s connector management and [ShaderFrog](https://shaderfrog.com/2/)'s visual composition approach.
 
 ---
 
@@ -930,6 +930,156 @@ This structure provides:
 6. **Extensibility**: Easy to add new connectors
 
 ---
+
+## UI Integration Patterns (OpenMetadata & ShaderFrog)
+
+### Connector Browser UI (OpenMetadata-inspired)
+
+**Pattern**: Visual connector discovery with categorized browsing, inspired by [OpenMetadata's connector browser](https://open-metadata.org/)
+
+**Key Features:**
+- **100+ Connectors**: Organized by category (API, Database, Messaging, Dashboard, Pipeline, ML Model, Metadata, Search, Storage)
+- **Visual Cards**: Each connector shows icon, name, description, category, status badges
+- **Search & Filter**: Text search, category filters, sort by popularity
+- **Quick Connect**: One-click connection initiation
+
+**UI Structure:**
+```typescript
+export interface ConnectorBrowserUI {
+  // Search and filtering
+  search: {
+    query: string
+    autocomplete: string[]
+    suggestions: Connector[]
+  }
+  
+  // Categories (from OpenMetadata)
+  categories: [
+    'API',
+    'Database', 
+    'Messaging',
+    'Dashboard',
+    'Pipeline',
+    'ML Model',
+    'Metadata',
+    'Search',
+    'Storage'
+  ]
+  
+  // Connector cards
+  cards: ConnectorCard[]
+  
+  // Actions
+  onConnect: (connector: Connector) => void
+  onViewDetails: (connector: Connector) => void
+}
+```
+
+### Visual Node Configuration (ShaderFrog-inspired)
+
+**Pattern**: Inline parameter controls on nodes with real-time preview, inspired by [ShaderFrog's visual editor](https://shaderfrog.com/2/)
+
+**Key Features:**
+- **Inline Controls**: Parameters visible directly on nodes
+- **Real-time Updates**: Changes reflect immediately
+- **Visual Preview**: See API request/response as you configure
+- **Type-appropriate Controls**: Select, input, slider, toggle based on parameter type
+
+**UI Structure:**
+```typescript
+export interface ConnectorNodeUI {
+  // Visual representation
+  node: {
+    icon: string
+    color: string
+    size: { width: number, height: number }
+    position: { x: number, y: number }
+  }
+  
+  // Inline parameter controls (ShaderFrog-style)
+  parameters: {
+    endpoint: {
+      type: 'select'
+      value: string
+      options: string[]
+      onChange: (value: string) => void
+    }
+    method: {
+      type: 'select'
+      value: 'GET' | 'POST' | 'PUT' | 'DELETE'
+      onChange: (value: string) => void
+    }
+    headers: {
+      type: 'json-editor'
+      value: Record<string, string>
+      onChange: (value: Record<string, string>) => void
+    }
+  }
+  
+  // Real-time preview
+  preview: {
+    request: APIRequest
+    response?: APIResponse
+    test: () => Promise<void>
+  }
+}
+```
+
+### Setup Wizard Flow (OpenMetadata-inspired)
+
+**Pattern**: Multi-step guided configuration with validation
+
+**Steps:**
+1. **Select Endpoint**: Choose API endpoint/action
+2. **Configure Parameters**: Fill in required parameters
+3. **Authenticate**: OAuth flow or credential setup
+4. **Test Connection**: Validate configuration
+5. **Review & Deploy**: Final review before activation
+
+**UI Structure:**
+```typescript
+export interface ConnectorSetupWizard {
+  connector: Connector
+  steps: [
+    'select-endpoint',
+    'configure-parameters',
+    'authenticate',
+    'test-connection',
+    'review-deploy'
+  ]
+  currentStep: number
+  config: Partial<ConnectorConfig>
+  
+  // Navigation
+  onNext: () => void
+  onBack: () => void
+  onComplete: (config: ConnectorConfig) => Promise<void>
+}
+```
+
+### Status Dashboard (OpenMetadata-inspired)
+
+**Pattern**: Real-time health indicators and metrics
+
+**Features:**
+- Connection status (🟢 Connected, 🟡 Warning, 🔴 Error)
+- Last sync time
+- API call statistics (total, successful, failed, rate-limited)
+- Error rate monitoring
+- Quick actions (test, re-authenticate, view logs)
+
+---
+
+## Related Documentation
+
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
+- **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete architecture
+- **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for flow explanation
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
+
+---
+
+*Complete API integration structure for production deployment with UI patterns from OpenMetadata (connector management) and ShaderFrog (visual composition).*
 
 
 

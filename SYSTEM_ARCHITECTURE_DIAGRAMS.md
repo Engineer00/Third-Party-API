@@ -1,5 +1,11 @@
 # System Architecture Diagrams (Mermaid Format)
 
+## Overview
+
+This document contains Mermaid-format diagrams for the complete system architecture, including third-party API integration flows. The architecture incorporates patterns from [OpenMetadata](https://open-metadata.org/) (connector management) and [ShaderFrog](https://shaderfrog.com/2/) (visual composition).
+
+---
+
 ## Complete System Flow Diagram
 
 ```mermaid
@@ -533,5 +539,37 @@ Export as PNG/SVG from Mermaid Live Editor and import into PowerPoint, Keynote, 
 
 ---
 
-*All diagrams are optimized for production system architecture visualization.*
+## UI Flow Components (OpenMetadata & ShaderFrog)
+
+### Connector Browser (OpenMetadata Pattern)
+
+The connector browser UI (inspired by OpenMetadata) appears in the Frontend Layer, providing:
+- Visual connector discovery with categorized browsing
+- Search and filter capabilities
+- One-click connection initiation
+
+### Visual Editor (ShaderFrog Pattern)
+
+The flow editor UI incorporates ShaderFrog patterns:
+- Inline parameter controls on nodes
+- Real-time preview of API requests/responses
+- Visual feedback during configuration
+- Drag-and-drop connector placement
+
+These UI components enhance the user experience for API integration workflows.
+
+---
+
+## Related Documentation
+
+- **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete architecture
+- **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure
+- **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for detailed flow explanation
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI implementation patterns
+- **Best Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended integration approach
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
+
+---
+
+*All diagrams are optimized for production system architecture visualization. UI patterns inspired by OpenMetadata (connector management) and ShaderFrog (visual composition).*
 

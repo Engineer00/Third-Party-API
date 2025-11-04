@@ -876,4 +876,5 @@ export class ProductionSemanticRouter {
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete semantic routing and tool wrapper implementation
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure and route map format
 - **API Design Proposal**: See `API_DESIGN_PROPOSAL.md` for complete API endpoint specifications
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI implementation patterns from OpenMetadata and ShaderFrog
 

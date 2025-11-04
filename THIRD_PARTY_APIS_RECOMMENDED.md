@@ -850,10 +850,35 @@ This provides broad coverage across major use cases while keeping implementation
 
 ---
 
+## UI Flow Patterns (OpenMetadata & ShaderFrog)
+
+### Connector Discovery (OpenMetadata Pattern)
+
+**Inspired by**: [OpenMetadata's connector browser](https://open-metadata.org/)
+
+**Features:**
+- Categorized browsing (100+ connectors)
+- Visual connector cards with icons and status
+- Search and filter capabilities
+- Popularity and usage metrics
+
+### Visual Composition (ShaderFrog Pattern)
+
+**Inspired by**: [ShaderFrog's visual editor](https://shaderfrog.com/2/)
+
+**Features:**
+- Drag-and-drop connector placement
+- Inline parameter controls on nodes
+- Real-time preview of API requests/responses
+- Visual feedback during configuration
+
+---
+
 ## Related Documentation
 
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for integration architecture
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure
 - **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for flow explanation
 - **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for patterns
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
 

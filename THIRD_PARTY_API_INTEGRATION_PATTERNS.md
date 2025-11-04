@@ -1,7 +1,7 @@
 # Third-Party API Integration Patterns
 
 ## Overview
-This document analyzes how block-based workflow systems (Sim, Flowise, Flojoy) integrate with third-party APIs like Google, Slack, webhooks, and HTTP requests. These patterns are essential for building a comprehensive CrewAI-like system.
+This document analyzes how block-based workflow systems (Sim, Flowise, Flojoy) integrate with third-party APIs like Google, Slack, webhooks, and HTTP requests. These patterns are essential for building a comprehensive CrewAI-like system. It also incorporates UI flow patterns from [OpenMetadata](https://open-metadata.org/) (connector discovery and management) and [ShaderFrog](https://shaderfrog.com/2/) (visual composition).
 
 ---
 
@@ -943,9 +943,81 @@ const toolResult = await flowRouter.route(query)
 
 ---
 
+## 13. UI Flow Patterns from OpenMetadata & ShaderFrog
+
+### 13.1 Connector Discovery UI (OpenMetadata Pattern)
+
+**Pattern**: Categorized connector browser with visual cards
+
+**Key Features:**
+- **100+ Connectors**: Organized by category (API, Database, Messaging, Dashboard, Pipeline, ML Model, Metadata, Search, Storage)
+- **Visual Cards**: Each connector shows icon, name, description, category, status
+- **Search & Filter**: Text search, category filters, sort by popularity
+- **Quick Connect**: One-click connection initiation
+
+**UI Components:**
+```typescript
+interface ConnectorBrowser {
+  connectors: Connector[]
+  searchQuery: string
+  selectedCategory: string
+  
+  // Visual display
+  viewMode: 'grid' | 'list'
+  connectorCards: ConnectorCard[]
+  
+  // Actions
+  onConnect: (connector: Connector) => void
+  onViewDetails: (connector: Connector) => void
+}
+```
+
+### 13.2 Setup Wizard Flow (OpenMetadata Pattern)
+
+**Pattern**: Multi-step guided setup with validation
+
+**Steps:**
+1. Connector Selection
+2. Configuration (endpoints, parameters)
+3. Authentication (OAuth or credentials)
+4. Test Connection
+5. Metadata Ingestion (what to sync)
+6. Schedule (sync frequency)
+7. Review & Deploy
+
+### 13.3 Visual Composition (ShaderFrog Pattern)
+
+**Pattern**: Node-based visual editor with real-time preview
+
+**Key Features:**
+- **Drag-and-Drop**: Connectors from palette to canvas
+- **Inline Parameters**: Controls directly on nodes (ShaderFrog-style)
+- **Real-time Preview**: See API request/response as you configure
+- **Visual Feedback**: Status indicators, connection validation
+
+**UI Flow:**
+```
+Connector Palette → Drag to Canvas → Configure Parameters → 
+Connect Nodes → Real-time Preview → Execute
+```
+
+### 13.4 Status & Monitoring Dashboard (OpenMetadata Pattern)
+
+**Pattern**: Real-time health indicators and metrics
+
+**Features:**
+- Connection status (🟢 Connected, 🟡 Warning, 🔴 Error)
+- Last sync time
+- API call statistics
+- Error rate monitoring
+- Quick actions (test, re-authenticate, view logs)
+
+---
+
 ## Related Documentation
 
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for production-ready implementation
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for complete connector structure
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual flow diagrams
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
 

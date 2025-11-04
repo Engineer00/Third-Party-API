@@ -1181,4 +1181,5 @@ The structure is inspired by all three platforms while improving upon their limi
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for detailed connector patterns
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
 - **Semantic Routing**: See `PRODUCTION_SYSTEM_DESIGN.md` for semantic routing implementation
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI patterns from OpenMetadata and ShaderFrog
 

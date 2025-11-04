@@ -816,10 +816,48 @@ This flow ensures reliable, secure, and efficient integration with third-party A
 
 ---
 
+## UI Flow Patterns (OpenMetadata & ShaderFrog)
+
+### OpenMetadata Connector Discovery Flow
+
+**Pattern**: Visual connector browser with categorized browsing
+
+**UI Flow:**
+1. **Landing**: Browse connectors by category or search
+2. **Selection**: Click connector card to view details
+3. **Details Modal**: See description, use cases, authentication requirements
+4. **Connect**: Click "Connect" button to start setup wizard
+5. **Setup Wizard**: Guided configuration through multiple steps
+6. **Test**: Validate connection before deploying
+7. **Deploy**: Activate connector and start syncing
+
+### ShaderFrog Visual Composition Flow
+
+**Pattern**: Node-based editor with inline parameter controls
+
+**UI Flow:**
+1. **Palette**: Browse connectors/blocks in categorized sidebar
+2. **Drag**: Drag connector from palette to canvas
+3. **Configure**: Adjust parameters directly on node (inline controls)
+4. **Connect**: Drag from output to input to create data flow
+5. **Preview**: See real-time preview of API request/response
+6. **Execute**: Run workflow and see execution status per node
+
+### Combined UI Flow for API Integration
+
+**Best of Both Worlds:**
+- OpenMetadata's connector discovery and setup wizard
+- ShaderFrog's visual composition and inline controls
+- Real-time preview and status indicators
+- Visual feedback throughout the configuration process
+
+---
+
 ## Related Documentation
 
 - **Production System Design**: See `PRODUCTION_SYSTEM_DESIGN.md` for complete architecture
 - **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure
 - **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
 - **API Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for detailed UI patterns from OpenMetadata and ShaderFrog
 

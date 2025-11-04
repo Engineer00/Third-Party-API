@@ -5,6 +5,8 @@
 This document provides a **production-ready** system design for a visual workflow platform combining:
 - **Visual Blocks & Triggers** (from Sim, Flowise, Flojoy)
 - **Semantic Routing & Intelligent Tool Selection** (from umbrella_corp)
+- **Connector Management UI** (from [OpenMetadata](https://open-metadata.org/) - 100+ connectors)
+- **Visual Composition Patterns** (from [ShaderFrog](https://shaderfrog.com/2/) - node-based editor)
 - **Production-Grade Infrastructure** (scalability, reliability, monitoring)
 
 ---
@@ -995,6 +997,313 @@ export class ProductionSemanticRouter {
 
 ---
 
+## UI Flows for API Integration (OpenMetadata & ShaderFrog Patterns)
+
+### Connector Discovery UI (OpenMetadata Pattern)
+
+**Inspired by**: [OpenMetadata's connector browser](https://open-metadata.org/) with 100+ connectors
+
+**UI Flow Components:**
+
+```typescript
+// components/connectors/ConnectorBrowser.tsx
+export interface ConnectorBrowserProps {
+  connectors: Connector[]
+  onConnect: (connector: Connector) => void
+  onViewDetails: (connector: Connector) => void
+}
+
+export function ConnectorBrowser({ connectors, onConnect, onViewDetails }: ConnectorBrowserProps) {
+  const [search, setSearch] = useState('')
+  const [category, setCategory] = useState<string | null>(null)
+  
+  // Categories from OpenMetadata pattern
+  const categories = [
+    'API',
+    'Database',
+    'Messaging',
+    'Dashboard',
+    'Pipeline',
+    'ML Model',
+    'Metadata',
+    'Search',
+    'Storage'
+  ]
+  
+  const filteredConnectors = useMemo(() => {
+    return connectors.filter(connector => {
+      const matchesSearch = connector.name.toLowerCase().includes(search.toLowerCase()) ||
+                           connector.description?.toLowerCase().includes(search.toLowerCase())
+      const matchesCategory = !category || connector.category === category
+      return matchesSearch && matchesCategory
+    })
+  }, [connectors, search, category])
+  
+  return (
+    <div className="connector-browser">
+      {/* Search & Filters (OpenMetadata-style) */}
+      <div className="browser-header">
+        <SearchInput value={search} onChange={setSearch} />
+        <CategoryFilter 
+          categories={categories}
+          selected={category}
+          onChange={setCategory}
+        />
+        <SortSelector />
+      </div>
+      
+      {/* Connector Grid */}
+      <div className="connector-grid">
+        {filteredConnectors.map(connector => (
+          <ConnectorCard
+            key={connector.id}
+            connector={connector}
+            onClick={() => onViewDetails(connector)}
+            onConnect={() => onConnect(connector)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+```
+
+**Key Features:**
+- **Categorized Browser**: 100+ connectors organized by category
+- **Visual Cards**: Icons, descriptions, status badges, popularity metrics
+- **Search & Filter**: Text search, category filters, sort by popularity
+- **Quick Connect**: One-click connection initiation
+
+### Setup Wizard Flow (OpenMetadata Pattern)
+
+**Multi-step guided configuration:**
+
+```typescript
+// components/connectors/ConnectorSetupWizard.tsx
+export function ConnectorSetupWizard({ connector }: { connector: Connector }) {
+  const [step, setStep] = useState(0)
+  const [config, setConfig] = useState<Partial<ConnectorConfig>>({})
+  
+  const steps = [
+    {
+      id: 'select-endpoint',
+      title: 'Select Endpoint',
+      component: EndpointSelector,
+      validate: (config) => !!config.endpoint
+    },
+    {
+      id: 'configure-parameters',
+      title: 'Configure Parameters',
+      component: ParameterConfig,
+      validate: (config) => validateParameters(config)
+    },
+    {
+      id: 'authenticate',
+      title: 'Authentication',
+      component: AuthenticationSetup,
+      validate: (config) => !!config.credentials
+    },
+    {
+      id: 'test-connection',
+      title: 'Test Connection',
+      component: ConnectionTest,
+      validate: (config) => config.testResult?.success === true
+    },
+    {
+      id: 'review-deploy',
+      title: 'Review & Deploy',
+      component: ReviewAndDeploy,
+      validate: (config) => true
+    }
+  ]
+  
+  return (
+    <Wizard>
+      <WizardHeader steps={steps} currentStep={step} />
+      <WizardContent>
+        {steps[step].component({ config, setConfig, connector })}
+      </WizardContent>
+      <WizardFooter>
+        <Button onClick={() => setStep(step - 1)} disabled={step === 0}>
+          Back
+        </Button>
+        <Button 
+          onClick={() => setStep(step + 1)} 
+          disabled={!steps[step].validate(config)}
+        >
+          {step === steps.length - 1 ? 'Deploy' : 'Next'}
+        </Button>
+      </WizardFooter>
+    </Wizard>
+  )
+}
+```
+
+### Visual Node Configuration (ShaderFrog Pattern)
+
+**Inline parameter controls with real-time preview:**
+
+```typescript
+// components/editor/ConnectorNode.tsx
+export function ConnectorNode({ node }: { node: Node }) {
+  const [config, setConfig] = useState(node.data.config)
+  const [preview, setPreview] = useState<APIPreview | null>(null)
+  
+  // Update preview on config change (ShaderFrog-style real-time updates)
+  useEffect(() => {
+    const request = buildRequest(config)
+    setPreview({ request, response: null })
+  }, [config])
+  
+  return (
+    <div className="connector-node">
+      {/* Node Header */}
+      <div className="node-header">
+        <Icon name={node.data.connector.icon} />
+        <span>{node.data.connector.name}</span>
+        <StatusIndicator status={node.data.status} />
+      </div>
+      
+      {/* Inline Parameters (ShaderFrog-style) */}
+      <div className="node-parameters">
+        <ParameterControl
+          label="Endpoint"
+          type="select"
+          value={config.endpoint}
+          options={node.data.connector.endpoints.map(e => e.name)}
+          onChange={(value) => {
+            setConfig({ ...config, endpoint: value })
+          }}
+        />
+        
+        <ParameterControl
+          label="Method"
+          type="select"
+          value={config.method}
+          options={['GET', 'POST', 'PUT', 'DELETE']}
+          onChange={(value) => {
+            setConfig({ ...config, method: value })
+          }}
+        />
+        
+        <ParameterControl
+          label="Headers"
+          type="json-editor"
+          value={config.headers || {}}
+          onChange={(value) => {
+            setConfig({ ...config, headers: value })
+          }}
+        />
+      </div>
+      
+      {/* Real-time Preview (ShaderFrog-style) */}
+      {preview && (
+        <div className="node-preview">
+          <PreviewPanel preview={preview} />
+          <TestButton 
+            onClick={async () => {
+              const response = await testConnection(config)
+              setPreview({ ...preview, response })
+            }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+```
+
+**Key Features:**
+- **Inline Controls**: Parameters visible directly on nodes
+- **Real-time Updates**: Changes reflect immediately in preview
+- **Visual Preview**: See API request/response as you configure
+- **Type-appropriate Controls**: Select, input, slider, toggle based on parameter type
+
+### Status Dashboard (OpenMetadata Pattern)
+
+**Real-time health indicators and metrics:**
+
+```typescript
+// components/connectors/ConnectorStatusDashboard.tsx
+export function ConnectorStatusDashboard({ connectors }: Props) {
+  return (
+    <div className="status-dashboard">
+      {connectors.map(connector => (
+        <ConnectorStatusCard
+          key={connector.id}
+          connector={connector}
+          status={getStatus(connector)}
+          metrics={getMetrics(connector)}
+          actions={[
+            { label: 'Test', onClick: () => testConnection(connector.id) },
+            { label: 'Re-authenticate', onClick: () => reauthenticate(connector.id) },
+            { label: 'View Logs', onClick: () => viewLogs(connector.id) }
+          ]}
+        />
+      ))}
+    </div>
+  )
+}
+
+function getStatus(connector: Connector): 'connected' | 'warning' | 'error' | 'disconnected' {
+  if (!connector.credentials) return 'disconnected'
+  if (connector.lastError) return 'error'
+  if (connector.tokenExpiresSoon) return 'warning'
+  if (connector.lastSync) return 'connected'
+  return 'disconnected'
+}
+
+function getMetrics(connector: Connector) {
+  return {
+    lastSync: connector.lastSync,
+    syncFrequency: connector.syncFrequency,
+    apiCalls: {
+      total: connector.metrics?.totalCalls || 0,
+      successful: connector.metrics?.successfulCalls || 0,
+      failed: connector.metrics?.failedCalls || 0,
+      rateLimited: connector.metrics?.rateLimitedCalls || 0
+    },
+    errorRate: connector.metrics?.errorRate || 0
+  }
+}
+```
+
+**Visual Indicators:**
+- 🟢 **Connected**: Green indicator, "Connected" text
+- 🟡 **Warning**: Yellow indicator, "Token expires soon" text
+- 🔴 **Error**: Red indicator, "Connection failed" text
+- ⚪ **Not Configured**: Gray indicator, "Not configured" text
+
+### Combined UI Flow for API Integration
+
+**Best practices from both platforms:**
+
+1. **Discovery** (OpenMetadata):
+   - Browse connectors by category
+   - Search and filter
+   - View connector details
+   - Quick connect
+
+2. **Setup** (OpenMetadata):
+   - Multi-step wizard
+   - Step-by-step validation
+   - Test connection
+   - Review and deploy
+
+3. **Configuration** (ShaderFrog):
+   - Drag connector to canvas
+   - Inline parameter controls
+   - Real-time preview
+   - Visual feedback
+
+4. **Monitoring** (OpenMetadata):
+   - Status dashboard
+   - Health indicators
+   - API metrics
+   - Quick actions
+
+---
+
 ## Semantic Routing & Intelligent Tool Selection
 
 ### Hierarchical Routing System
@@ -1604,5 +1913,18 @@ This production-level system design provides:
 
 ---
 
-*Production-ready system design combining visual blocks/triggers with semantic routing and intelligent tool selection.*
+## Related Documentation
+
+- **Comprehensive System Design**: See `COMPREHENSIVE_SYSTEM_DESIGN.md` for complete system overview
+- **Third-Party API Structure**: See `THIRD_PARTY_API_STRUCTURE.md` for connector structure and patterns
+- **Integration Flow**: See `THIRD_PARTY_API_INTEGRATION_FLOW_EXPLAINED.md` for detailed flow explanation
+- **UI Flow Patterns**: See `OPENMETADATA_SHADERFROG_UI_PATTERNS.md` for UI implementation patterns
+- **Best Approach**: See `BEST_API_INTEGRATION_APPROACH.md` for recommended integration approach
+- **Integration Patterns**: See `THIRD_PARTY_API_INTEGRATION_PATTERNS.md` for integration patterns
+- **System Architecture Diagrams**: See `SYSTEM_ARCHITECTURE_DIAGRAMS.md` for visual diagrams
+- **API Design**: See `API_DESIGN_PROPOSAL.md` for API endpoint specifications
+
+---
+
+*Production-ready system design combining visual blocks/triggers with semantic routing and intelligent tool selection. UI patterns inspired by OpenMetadata (connector management) and ShaderFrog (visual composition).*
 
